@@ -58,9 +58,13 @@ evidence/       your screenshots and exports
 
 Start with **[LAB-GUIDE.md](LAB-GUIDE.md)**.
 
-## Results (fill in after completing the lab)
+## Results (run on IBM Z Xplore, 2026-11-23)
 
-- IBM Z Xplore badge: ________
-- ServiceNow records: CHG________ (Normal), INC________, CHG________ (Emergency)
-- PAT results: QA v1.0 RC 0 · emergency PAT v1.1 RC 0 · production verification RC 0
-- Reconciliation: 8 accounts · $639,353.84 balance · $65.54 interest (COBOL matches Db2)
+- Every job ran on real z/OS; full job logs and a step-by-step table are in evidence/auto-run (AUTO-RUN-SUMMARY.md)
+- PAT: QA v1.0 vs V10TEST CC 0000 · production verification CC 0000 · emergency PAT v1.1 vs V11PROD CC 0000 · backout drill PAT CC 0000
+- Production defect: on this system's COBOL settings v1.0 did not abend - it accepted a blank balance as 0.00 for account 1000100010 and ended RC 4 with totals that still balanced (evidence/D5-v10-wrong-balance.png). v1.1 rejects it as BALANCE NOT NUMERIC
+- Detection lesson: the Ops Automation Lab's message monitor classed the run as RC 4 / NOTIFY - only the PAT comparison against a signed-off baseline exposed the data defect
+- IBM Z Xplore: VSC1 complete; Fundamentals badge in progress
+- ServiceNow records: to be added
+
+
