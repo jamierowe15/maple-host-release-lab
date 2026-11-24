@@ -1,0 +1,24 @@
+# Build verification: every push compiles MPINTCLC with GnuCOBOL and
+# re-runs the PAT regression suite against the signed-off expected results.
+# This is the "nothing gets promoted unless it builds and passes" gate.
+name: cobol-build
+on:
+  push:
+  pull_request:
+jobs:
+  build-and-regress:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install GnuCOBOL
+        run: sudo apt-get update && sudo apt-get install -y gnucobol4
+      - name: v1.1 against production data
+        run: bash scripts/local-build.sh v1.1 PRODDATA
+      - name: v1.1 against test data
+        run: bash scripts/local-build.sh v1.1 TESTDATA
+      - name: v1.0 (original release) against test data
+        run: bash scripts/local-build.sh v1.0 TESTDATA
+      - name: In-stream data JCL is in sync with /data
+        run: |
+          python3 scripts/gen-mpload.py
+          git diff --exit-code src/jcl/MPLOAD.jcl

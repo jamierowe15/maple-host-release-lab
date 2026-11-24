@@ -1,0 +1,16 @@
+MAPLE HOST LAB - DAILY INTEREST ACCRUAL RPT PGM: MPINTCLC
+ACCOUNT     TYPE         BALANCE    RATE    DAILY INTEREST
+1000100001  CH          1,500.25  0.0500              0.00
+1000100002  SV         25,000.00  2.2500              1.54
+1000100003  SV        103,450.75  3.1000              8.79
+1000100004  CH              0.00  0.0000              0.00
+1000100005  SV          8,750.40  1.7500              0.42
+1000100006  CH            640.10  0.0500              0.00
+1000100007  SV        500,000.00  4.0000             54.79
+1000100008  SV             12.34  2.0000              0.00
+
+RECORDS READ                9
+RECORDS ACCEPTED            8
+RECORDS REJECTED            1
+TOTAL BALANCE              639,353.84
+TOTAL INTEREST                  65.54
